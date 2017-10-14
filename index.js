@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import App from './src/redux/index';
 
-AppRegistry.registerComponent('myblogApp', () => App);
+AppRegistry.registerComponent('myblogApp', () => () => App);
