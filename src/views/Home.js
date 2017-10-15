@@ -5,13 +5,14 @@
  */
 
 import React, { Component } from 'react'
+
 import {
     StyleSheet,
     Text,
     View
-} from 'react-native'
+    } from 'react-native'
 import { connect } from 'react-redux'
-
+import Button from "react-native-button";
 import ArticleGroup from '../components/ArticleGroup'
 
 /**
@@ -32,10 +33,13 @@ const workMap = (dispatch, ownProps) => {
 
 class Home extends Component<{}> {
 
+    pushHistory = () => {
+        this.props.history.replace('/te');
+    }
+
     render() {
         let {workList} = this.props;
-
-        console.log('workList', workList);
+        const { navigate } = this.props.navigation;
 
         return (
             <View style={styles.container}>
@@ -47,9 +51,13 @@ class Home extends Component<{}> {
                 <View style={{flex:1, alignItems:'center', width: "100%"}}>
                     <ArticleGroup></ArticleGroup>
                 </View>
-                <Text>
-                    workList: {workList}
-                </Text>
+                <Button
+                    style={{fontSize: 20, color: 'green'}}
+                    styleDisabled={{color: 'red'}}
+                    onPress={() => navigate('Test')}>
+                    Press Me!
+                </Button>
+
             </View>
         )
     }
