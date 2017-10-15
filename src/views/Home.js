@@ -8,6 +8,7 @@ import React, { Component } from 'react'
 
 import {
     StyleSheet,
+    FlatList,
     Text,
     View
     } from 'react-native'
@@ -21,7 +22,7 @@ import ArticleGroup from '../components/ArticleGroup'
  */
 const mapStateToProps = ({writer}) => {
     return {
-        workList: writer.workList
+        articleLists: [{day:'2017-05-21', articles:[{title:"有朋自远方来", content:'出自论语，  不亦说乎'}]}], //
     }
 }
 
@@ -33,13 +34,8 @@ const workMap = (dispatch, ownProps) => {
 
 class Home extends Component<{}> {
 
-    pushHistory = () => {
-        this.props.history.replace('/te');
-    }
-
     render() {
-        let {workList} = this.props;
-        const { navigate } = this.props.navigation;
+        let {articleLists, navigation} = this.props;
 
         return (
             <View style={styles.container}>
@@ -48,13 +44,15 @@ class Home extends Component<{}> {
                         博客网站
                     </Text>
                 </View>
+
                 <View style={{flex:1, alignItems:'center', width: "100%"}}>
-                    <ArticleGroup></ArticleGroup>
+                    <ArticleGroup articleLists={articleLists}></ArticleGroup>
                 </View>
+
                 <Button
                     style={{fontSize: 20, color: 'green'}}
                     styleDisabled={{color: 'red'}}
-                    onPress={() => navigate('Test')}>
+                    onPress={() => navigation.navigate('Test')}>
                     Press Me!
                 </Button>
 
@@ -75,12 +73,6 @@ const styles = StyleSheet.create({
         width:"100%",
         height:50,
         backgroundColor:'#199ED8',
-        marginTop:20
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
     }
 });
 

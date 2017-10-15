@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import {
-    Platform,
     StyleSheet,
     Text,
     View
 } from 'react-native';
 
-export default class ArticleShort extends Component<{}> {
+export default class ArticleShort extends Component{
     render() {
+        let {title, content} = this.props;
+
         return (
             <View style={styles.article}>
                 <View style={styles.title}>
                     <Text style={{paddingLeft: 20, lineHeight:40,}}>
-                        技能特长
+                        {title}
                     </Text>
                 </View>
 
-                <View style={styles.articleBody}></View>
+                <View style={styles.articleBody}>
+                    <Text>
+                        {content}
+                    </Text>
+                </View>
             </View>
         );
     }

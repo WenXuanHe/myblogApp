@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
 import ArticleItem from './ArticleItem';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+
 import {
     StyleSheet,
+    FlatList,
+    ScrollView,
     Text,
     View
 } from 'react-native';
 
+const Article = (props) => {
+    return (
+        <View style={styles.articleGroup}>
+            <View style={styles.title} >
+                <Text style={styles.date}>{props.day}</Text>
+            </View>
+            <FlatList
+                data={props.articles}
+                renderItem={(item)=>{
+                    return (
+                        <View style={{flex:1, alignItems:'center', width: "100%", marginTop: 20}}>
+                            <ArticleItem {...item.item}></ArticleItem>
+                        </View>
+                    )
+                }}
+            />
+        </View>
+    )
+}
 
-export default class ArticleGroup extends Component<{}> {
+export default class ArticleGroup extends Component {
 
     render() {
+        let {articleLists} = this.props;
         return (
-            <View style={styles.articleGroup}>
-                <View style={styles.title} >
-                    <Text style={styles.date}>2017-10-12</Text>
-                </View>
-                <View style={{flex:1, alignItems:'center', width: "100%", marginTop: 20}}>
-                    <ArticleItem></ArticleItem>
-                </View>
-            </View>
+            <ScrollView>
+                <FlatList
+                data = {articleLists}
+                renderItem = {(item) => <Article {...item.item}></Article>}
+                />
+            </ScrollView>
+
         );
     }
 }
