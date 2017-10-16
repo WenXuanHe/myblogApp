@@ -1,4 +1,4 @@
-import Home from "../views/Home";
+import Home from "../views/ArticleList";
 import WorkList from "../views/WorkList";
 
 const Routes = {

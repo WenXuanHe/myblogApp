@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ArticleItem from './ArticleItem';
-import { connect } from 'react-redux';
 
 import {
     StyleSheet,
@@ -35,31 +34,33 @@ export default class ArticleGroup extends Component {
     render() {
         let {articleLists} = this.props;
         return (
-            <ScrollView style={styles.articleGroup}>
-                <FlatList
-                    style={styles.articleGroup}
-                data = {articleLists}
-                renderItem = {(item, i) => <Article key={i} {...item.item}></Article>}
-                />
-            </ScrollView>
-
-        );
-    }
+            <View style={styles.group}>
+                <ScrollView style={styles.w_100}>
+                    <FlatList
+                        style={styles.w_100}
+                        data = {articleLists}
+                        renderItem = {(item, i) => <Article key={i} {...item.item}></Article>}
+                    />
+                </ScrollView>
+            </View>
+            );
+        }
 }
 
 const styles = StyleSheet.create({
-    articleGroup: {
-        width: '100%'
+    group:{
+        flex:1, alignItems:'center', width: "100%"
     },
     title:{
         height:50,
         backgroundColor: '#f9fbf9',
-
     },
     date:{
         paddingLeft: 20,
         lineHeight: 50,
-
+    },
+    w_100:{
+        width: '100%'
     }
 
 });

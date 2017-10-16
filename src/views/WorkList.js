@@ -11,10 +11,11 @@ import {
     FlatList,
     ScrollView,
     Text,
+    TouchableHighlight,
     View
 } from 'react-native'
 import { connect } from 'react-redux'
-import Button from "react-native-button";
+import BlogHeader from "../components/Header";
 
 /**
  * 从store中拿到的状态
@@ -41,19 +42,28 @@ class WorkList extends Component<{}> {
 
         return (
             <ScrollView>
+                <BlogHeader text="博客"/>
                 <FlatList
                     style={styles.FlatList}
                 data={workList}
                 renderItem={(item)=>{
                     return (
-                        <View style={styles.workItem} onPress={() => navigation.navigate('Home')} >
-                            <View style={{marginLeft:10}}>
-                                <Text style={styles.workItemText}>{item.item.workName}</Text>
+                        <TouchableHighlight
+                            activeOpacity={0.7}
+                            underlayColor='green'
+                            onHideUnderlay={()=>{}}
+                            onShowUnderlay={()=>{}}
+                            onPress={() => navigation.navigate('Home', {workName: item.item.workName})} >
+                            <View style={styles.workItem}>
+                                <View style={{marginLeft:10}}>
+                                    <Text style={styles.workItemText}>{item.item.workName}</Text>
+                                </View>
+                                <View style={{marginRight:10}}>
+                                    <Text style={styles.workItemText}>{item.item.number} 篇</Text>
+                                </View>
                             </View>
-                            <View style={{marginRight:10}}>
-                                <Text style={styles.workItemText}>{item.item.number} 篇</Text>
-                            </View>
-                        </View>
+
+                        </TouchableHighlight>
                     )
                 }}
                 />
