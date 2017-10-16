@@ -12,7 +12,6 @@ let reducer = (state = data.writer, action) => {
     // let workList = state.get('workList'),
     //     currentWorkID = state.get('currentWorkID').toString(),
     //     currentArticleID = state.get('currentArticleID').toString();
-    console.log(state.workList)
     return deal[action.type] ? deal[action.type]() : state;
 }
 

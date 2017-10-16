@@ -18,9 +18,9 @@ const Article = (props) => {
             </View>
             <FlatList
                 data={props.articles}
-                renderItem={(item)=>{
+                renderItem={(item, i)=>{
                     return (
-                        <View style={{flex:1, alignItems:'center', width: "100%", marginTop: 20}}>
+                        <View key={i} style={{flex:1, alignItems:'center', width: "100%", marginTop: 20}}>
                             <ArticleItem {...item.item}></ArticleItem>
                         </View>
                     )
@@ -35,10 +35,11 @@ export default class ArticleGroup extends Component {
     render() {
         let {articleLists} = this.props;
         return (
-            <ScrollView>
+            <ScrollView style={styles.articleGroup}>
                 <FlatList
+                    style={styles.articleGroup}
                 data = {articleLists}
-                renderItem = {(item) => <Article {...item.item}></Article>}
+                renderItem = {(item, i) => <Article key={i} {...item.item}></Article>}
                 />
             </ScrollView>
 

@@ -1,9 +1,10 @@
 import Home from "../views/Home";
-import Test from "../components/Test";
+import WorkList from "../views/WorkList";
 
 const Routes = {
-    Home: { screen: Home },
-    Test: { screen: Test }
+    WorkList: { screen: WorkList },
+    Home: { screen: Home }
+
 };
 
 export default Routes;

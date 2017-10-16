@@ -12,7 +12,7 @@ export default class ArticleShort extends Component{
         return (
             <View style={styles.article}>
                 <View style={styles.title}>
-                    <Text style={{paddingLeft: 20, lineHeight:40,}}>
+                    <Text style={{lineHeight:40,}}>
                         {title}
                     </Text>
                 </View>
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     },
 
     articleBody: {
-        flex: 1
+        flex: 1,
+        // marginLeft: 20
     }
 });
